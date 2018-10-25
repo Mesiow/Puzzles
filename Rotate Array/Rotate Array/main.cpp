@@ -1,37 +1,26 @@
 #include <iostream>
-
-
-int *getElements(int arr[], int temp[], int size, int nmberElements)
-{
-	int *t = temp;
-
-	return t;
-}
+//Rotates Array to the left based on d(how many units to rotate left)
 
 
 void rotateLeft(int arr[], int size, int nmberElements)
 {
-	int temp;
 	for (int i = 0; i < size; i++)
-	{
-		temp = arr[i];
 		arr[i] = arr[i + 1];
-		temp = arr[i + 1];
-		//temp[i] = arr[i]; //store elements to shift left in temp array
-	}
-
 }
 
 void rotate(int arr[], int temp[], int size, int nmberElements)
 {
-	auto t = getElements(arr, temp, size, nmberElements);
+
 	for (int i = 0; i<nmberElements; i++)
 		rotateLeft(arr, size, nmberElements);
 
 
-
-	for (int i = size; i > nmberElements; i--)
-		arr[i] = t[i];
+	int k = 0;
+	for (int i = (size - nmberElements); i < size; i++)
+	{
+		arr[i] = temp[k];
+		k++;
+	}
 }
 
 void print(int arr[], int size)
@@ -46,14 +35,20 @@ void print(int arr[], int size)
 int main()
 {
 
-	int arr[] = { 1, 2, 3 ,4, 5, 6 };
+	int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
 	int d = 2; //number of elements to shift left
+
+	int *temp = new int[d];
+	for (int i = 0; i < d; i++)
+		temp[i] = arr[i];
 
 	int size = sizeof(arr) / sizeof(arr[0]);
 	print(arr, size);
-	rotate(arr, size, d);
+	rotate(arr, temp, size, d);
 	std::cout << "Shifted left " << d << std::endl;
 	print(arr, size);
+
+	delete temp;
 
 	std::cin.get();
 	return 0;
