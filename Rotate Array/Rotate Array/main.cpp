@@ -36,7 +36,7 @@ int main()
 {
 
 	int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
-	int d = 2; //number of elements to shift left
+	int d=2; //number of elements to shift left
 
 	int *temp = new int[d];
 	for (int i = 0; i < d; i++)
@@ -48,8 +48,9 @@ int main()
 	std::cout << "Shifted left " << d << std::endl;
 	print(arr, size);
 
-	delete temp;
-
+	system("pause");
 	std::cin.get();
+
+	delete temp;
 	return 0;
 }
